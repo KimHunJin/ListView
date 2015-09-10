@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/roomImage"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/roomName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/roomImage"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/roomInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roomName"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/roomImage"
+        android:text="방 설명 가나다라마바사아차카타파하"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/ic_home_language"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/roomInfo"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/roomImage"
+        android:background="@drawable/ic_fragment_home_list_language" />
+
+    <TextView
+        android:id="@+id/roomLanguage"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roomInfo"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/ic_home_language"
+        android:singleLine="true"
+        android:text="한국어 영어 독어 프랑스어"
+        android:textSize="12dp" />
+
+    <ImageView
+        android:id="@+id/ic_home_membercount"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/roomInfo"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/roomLanguage"
+        android:background="@drawable/ic_fragment_home_list_member" />
+
+    <TextView
+        android:id="@+id/roomMemberCount"
+        android:layout_width="16dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roomInfo"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/ic_home_membercount"
+        android:singleLine="true"
+        android:text="10"
+        android:textSize="12dp" />
+
+    <ImageView
+        android:id="@+id/ic_home_roomlocation"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/roomInfo"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/roomMemberCount"
+        android:background="@drawable/ic_fragment_home_list_location" />
+
+    <TextView
+        android:id="@+id/roomLocation"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roomInfo"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/ic_home_roomlocation"
+        android:singleLine="true"
+        android:text="강남구"
+        android:textSize="12dp" />
+
+</RelativeLayout>
