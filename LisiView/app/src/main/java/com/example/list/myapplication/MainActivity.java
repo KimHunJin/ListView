@@ -35,7 +35,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
-    Context mContext;
     ArrayList<ListItem> list;
     SwipeRefreshLayout swipe_refresh;
     int count;
@@ -51,7 +50,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         swipe_refresh = (SwipeRefreshLayout)findViewById(R.id.swipe_refresh_widget);
-//		swipe_refresh.setColorSchemeColors(Color.GREEN, Color.RED, Color.BLUE);
         swipe_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             public void onRefresh() {
@@ -63,15 +61,19 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        // 리스트 생성
         list = new ArrayList<>();
 
+        // 사용자 정의 어댑터
         mAdapter = new ListAdapter(this, R.layout.item, list);
 
         ListView mList = (ListView)findViewById(R.id.home_list);
 
         mList.setAdapter(mAdapter);
+        // 서버에서 데이터를 가져옴
         new NetworkGetList().execute("");
 
+        // 리스트를 스크롤 했을 시 이벤트
         mList.setOnScrollListener(new AbsListView.OnScrollListener() {
 
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -95,11 +97,13 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        // 리스트 클리 이벤트
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // 클릭 한 포지션의 아이템을 가져옴
                 ListItem item = (ListItem)parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(),item.getmRoomName()+"클릭 되었습니다.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),item.getmRoomName()+" 클릭 되었습니다.",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -114,6 +118,7 @@ public class MainActivity extends ActionBarActivity {
         list.clear();
     }
 
+    // 네트워크를 통해 리스트 내용을 가져오는 함수
     private class NetworkGetList extends AsyncTask<String, String, Integer>
     {
         private String err_msg = "Network error.";
@@ -143,7 +148,6 @@ public class MainActivity extends ActionBarActivity {
 
                 ArrayList<NameValuePair> name_value = new ArrayList<NameValuePair>();
                 http_post = new HttpPost("http://54.149.51.26/api/get_room_list.php");
-//			http_post = new HttpPost(uri);
 
                 name_value.add(new BasicNameValuePair("offset", ""+offset));
                 name_value.add(new BasicNameValuePair("row_cnt", ""+row_cnt));
@@ -221,36 +225,15 @@ public class MainActivity extends ActionBarActivity {
             }
         }
 
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
         init();
+        // 어댑터가 변경 되었을 시 데이터 재갱신
         mAdapter.notifyDataSetChanged();
         new NetworkGetList().execute("");
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

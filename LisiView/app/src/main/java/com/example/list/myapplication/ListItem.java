@@ -5,7 +5,6 @@ package com.example.list.myapplication;
  */
 public class ListItem {
     private String mRoomImage;
-    //    private boolean mRoomMaker;
     private String mRoomMaker;
     private String mRoomName;
     private String mRoomInfo;
@@ -21,16 +20,6 @@ public class ListItem {
     public void setmRoomKey(String mRoomKey) {
         this.mRoomKey = mRoomKey;
     }
-
-/*    public ListItem(int img, String name, String info, String member,String location, String lang, boolean maker) {
-        this.setmRoomImage(img);
-        this.setmRoomInfo(info);
-        this.setmRoomName(name);
-        this.setmRoomLocation(location);
-        this.setmRoomLanguage(lang);
-        this.setmRoomMember(member);
-        this.setmRoomMaker(maker);
-    }*/
 
     public String getmRoomMaker() {
         return mRoomMaker;

@@ -16,7 +16,7 @@ import java.util.List;
  * Created by HunJin on 2015-09-11.
  */
 public class ListAdapter extends ArrayAdapter<ListItem>{
-    private LayoutInflater mInflater = null;
+    private LayoutInflater mInflater = null;  // layinflater로 custom layout 구성
     private Context mContext = null;
     private ImageLoader loader = null;
 
@@ -25,13 +25,14 @@ public class ListAdapter extends ArrayAdapter<ListItem>{
 
         mInflater = LayoutInflater.from(context);
         mContext = context;
-        loader = ImageLoader.getInstance();
+        loader = ImageLoader.getInstance();  // image를 가져오기 위한 방법 (라이브러리)
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Holder holder;
 
+        // 사용자 정의뷰가 null일 경우 먼저 레이아웃 생성
         if (convertView == null) {
             holder = new Holder();
             convertView = mInflater.inflate(R.layout.item, parent, false);
@@ -44,6 +45,7 @@ public class ListAdapter extends ArrayAdapter<ListItem>{
             convertView.setTag(holder);
         }
 
+        // 홀더를 이용하여 저장
         holder = (Holder) convertView.getTag();
         ListItem item = getItem(position);
         holder.mRoomNameView.setText(item.getmRoomName());

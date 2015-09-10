@@ -13,6 +13,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
  * Created by HunJin on 2015-09-11.
  */
 public class MyApplication extends Application{
+    // 이미지 로더를 사용하기 위한 application class
     @Override
     public void onCreate() {
         init(getApplicationContext());
